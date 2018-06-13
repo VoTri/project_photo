@@ -4,5 +4,5 @@ class Photo < ApplicationRecord
   has_many :cate_photos
   has_many :rates
   validates :image_url, presence: true
-  validates :title, presence: true, limit: {minimun: 1}
+  validates :title, presence: true
 end
