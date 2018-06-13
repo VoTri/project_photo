@@ -1,19 +1,16 @@
 default: &default
   adapter: mysql2
-  encoding: utf8
-  pool: <%= ENV["pool"] %>
-  username: <%= ENV["username"] %>
-  password: <%= ENV["password"] %>
-  socket: <%= ENV["socket"] %>
 
 development:
   <<: *default
-  database: demo_development
+  database: <%= ENV["database_dev"] %>
+  username: <%= ENV["username"] %>
+  password: <%= ENV["password"] %>
+  host: <%= ENV["host_dev"] %>
 
 production:
-  adapter: mysql2
-  encoding: utf8
-  database: demo_production
+  <<: *default
+  database: <%= ENV["database"] %>
   username: <%= ENV["user_name"] %>
   password: <%= ENV["pass_word"] %>
   host: <%= ENV["host"] %>
