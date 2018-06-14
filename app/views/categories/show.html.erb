@@ -1,0 +1,17 @@
+<div class="products-catagories-area clearfix">
+  <div class="amado-pro-catagory clearfix row">
+    <% @cate_photos = @category.cate_photos %>
+    <% @cate_photos.each do |cate_photo| %>
+      <% photo = cate_photo.photo %>
+      <div class="single-products-catagory clearfix">
+        <a href="<%= photo_path(photo) %>">
+          <%= image_tag photo.image_url %>
+          <div class="hover-content">
+            <div class="line"></div>
+            <p><%= photo.title %></p>
+          </div>
+        </a>
+      </div>
+    <% end %>
+  </div>
+</div>

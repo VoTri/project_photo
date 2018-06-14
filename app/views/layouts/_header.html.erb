@@ -10,11 +10,10 @@
   <!-- Amado Nav -->
   <nav class="amado-nav">
     <ul>
-      <li class="active"><a href="#">Home</a></li>
-      <li><a href="#">Shop</a></li>
-      <li><a href="#">Product</a></li>
-      <li><a href="#">Cart</a></li>
-      <li><a href="#">Checkout</a></li>
+      <li><%= link_to 'Home', root_path %></li>
+      <% @categories.each do |category| %>
+        <li><%= link_to category.name, category_path(category) %></li>
+      <% end %>
       <li>
         <!-- <form id="custom-search-form" class="form-search form-horizontal pull-right">
           <div class="input-append span12">
