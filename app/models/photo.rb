@@ -18,7 +18,7 @@ class Photo < ApplicationRecord
       end
       field :user_id do
         label 'User'
-         formatted_value do
+        formatted_value do
           Users.find_by(id: value).name
         end
       end
