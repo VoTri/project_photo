@@ -16,12 +16,15 @@
       <li><a href="#">Cart</a></li>
       <li><a href="#">Checkout</a></li>
       <li>
-        <form id="custom-search-form" class="form-search form-horizontal pull-right">
+        <!-- <form id="custom-search-form" class="form-search form-horizontal pull-right">
           <div class="input-append span12">
             <input type="text" class="search-query input-large" placeholder="Search">
-            <button type="submit" class="btn"><i class="icon-search"></i></button>
           </div>
-        </form>
+        </form> -->
+        <%= search_form_for @search, url: photos_path, class: "form-search form-horizontal pull-right" do |f| %>
+          <%= f.text_field :title_or_description_cont, class: "search-query input-large form-control" %>
+          <%= f.submit 'Search', class: "btn btn-default" %>
+        <% end %>
       </li>
     </ul>
   </nav>
