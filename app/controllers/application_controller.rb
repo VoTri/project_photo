@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
-  before_action :load_search, :load_catefory
   protect_from_forgery with: :exception
+  before_action :load_search, :load_catefory
 
   def load_search
     @search = Photo.search(params[:q])

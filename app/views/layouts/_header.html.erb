@@ -14,12 +14,15 @@
       <% @categories.each do |category| %>
         <li><%= link_to category.name, category_path(category) %></li>
       <% end %>
+      <% if user_signed_in? %>
+        <li>Welcome <%= current_user.name %></li>
+        <li><%= link_to "Edit profile", edit_user_registration_path %></li>
+        <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
+      <% else %>
+        <li><%= link_to "Login", new_user_session_path %></li>
+        <li><%= link_to "Sign up", new_user_registration_path %></li>
+      <% end %>
       <li>
-        <!-- <form id="custom-search-form" class="form-search form-horizontal pull-right">
-          <div class="input-append span12">
-            <input type="text" class="search-query input-large" placeholder="Search">
-          </div>
-        </form> -->
         <%= search_form_for @search, url: photos_path, class: "form-search form-horizontal pull-right" do |f| %>
           <%= f.text_field :title_or_description_cont, class: "search-query input-large form-control" %>
           <%= f.submit 'Search', class: "btn btn-default" %>
