@@ -19,4 +19,6 @@
 //= require bootstrap.min
 //= require plugins
 //= require active
+//= require ckeditor/init
+//= require cocoon
 //= require_tree .
