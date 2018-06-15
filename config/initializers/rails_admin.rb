@@ -1,6 +1,7 @@
 RailsAdmin.config do |config|
   config.authenticate_with do
-    warden.authenticate! scope: :user
+    a =  warden.authenticate! scope: :user
+    redirect_to main_app.new_user_session_path if a.role == "user"
   end
   config.current_user_method(&:current_user)
   config.actions do
