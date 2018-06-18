@@ -10,23 +10,23 @@
   <!-- Amado Nav -->
   <nav class="amado-nav">
     <ul>
-      <li><%= link_to 'Home', root_path %></li>
+      <li><%= link_to t("views.layouts.header.home"), root_path %></li>
       <% @categories.each do |category| %>
         <li><%= link_to category.name, category_path(category) %></li>
       <% end %>
       <% if user_signed_in? %>
         <li>Welcome <%= current_user.name %></li>
-        <li><%= link_to "My Photo", photos_path %></li>
-        <li><%= link_to "Edit profile", edit_user_registration_path %></li>
-        <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
+        <li><%= link_to t("views.layouts.header.my_photo"), photos_path %></li>
+        <li><%= link_to t("views.layouts.header.edut_profile"), edit_user_registration_path %></li>
+        <li><%= link_to t("views.layouts.header.logout"), destroy_user_session_path, method: :delete %></li>
       <% else %>
-        <li><%= link_to "Login", new_user_session_path %></li>
-        <li><%= link_to "Sign up", new_user_registration_path %></li>
+        <li><%= link_to t("views.layouts.header.login"), new_user_session_path %></li>
+        <li><%= link_to t("views.layouts.header.sign_up"), new_user_registration_path %></li>
       <% end %>
       <li>
         <%= search_form_for @search, url: photos_path, class: "form-search form-horizontal pull-right" do |f| %>
           <%= f.text_field :title_or_description_cont, class: "search-query input-large form-control" %>
-          <%= f.submit 'Search', class: "btn btn-default" %>
+          <%= f.submit t("views.layouts.header.search"), class: "btn btn-default" %>
         <% end %>
       </li>
     </ul>

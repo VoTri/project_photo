@@ -1,16 +1,16 @@
 <% if params[:q].nil? %>
   <div class="photo">
     <p id="notice"><%= notice %></p>
-    <%= link_to 'New Photo', new_photo_path, class: "btn btn-success" %>
+    <%= link_to t("views.photos.index.new_photo"), new_photo_path, class: "btn btn-success" %>
     <br />
     <table class="table table-bordered table-photo">
       <thead>
         <tr>
-          <th>Name</th>
-          <th>Description</th>
-          <th>Image</th>
-          <th>Category</th>
-          <th colspan="2">Action</th>
+          <th><%= t("views.photos.index.name") %></th>
+          <th><%= t("views.photos.index.description") %></th>
+          <th><%= t("views.photos.index.image") %></th>
+          <th><%= t("views.photos.index.category") %></th>
+          <th colspan="2"><%= t("views.photos.index.action") %></th>
         </tr>
       </thead>
 
@@ -30,10 +30,10 @@
             <%= image_tag photo.image_url.url, style: "max-width: 200px; max-height: 200px" %>
           </td>
           <td>
-            <%= link_to 'Edit', edit_photo_path(photo), class: "btn btn-sm btn-primary" %>
+            <%= link_to t("views.photos.index.edit"), edit_photo_path(photo), class: "btn btn-sm btn-primary" %>
           </td>
           <td>
-            <%= link_to 'Destroy', photo, method: :delete, data: { confirm: 'Are you sure?' },class: "btn btn-sm btn-primary" %>
+            <%= link_to t("views.photos.index.destroy"), photo, method: :delete, data: { confirm: 'Are you sure?' },class: "btn btn-sm btn-primary" %>
           </td>
         </tr>
         <% end %>

@@ -10,7 +10,7 @@
       <%= render 'cate_photo_fields', f: cate_photos %>
     <% end %>
     <div class="links">
-      <%= link_to_add_association 'Add Category', f, :cate_photos, class: "btn btn-primary" %>
+      <%= link_to_add_association t("views.photos.form.add_category"), f, :cate_photos, class: "btn btn-primary" %>
     </div>
   </div>
 
