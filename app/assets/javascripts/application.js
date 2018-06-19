@@ -22,3 +22,5 @@
 //= require ckeditor/init
 //= require cocoon
 //= require_tree .
+//= require jquery.raty
+//= require ratyrate

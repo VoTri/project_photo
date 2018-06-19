@@ -1,7 +1,4 @@
 class PhotosController < ApplicationController
-  before_action :set_photo, only: [:show]
-
-  def show
   before_action :set_photo, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, only: [:edit, :update, :destroy]
   before_action :set_user, only: [:edit, :update, :destroy]

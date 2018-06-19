@@ -24,8 +24,15 @@
                 <% category = cate_photo.category %>
                 <%= link_to category.name, category_path(category) %>
               <% end %>
-              <h6><%= @photo.title %></h6>
             </a>
+            <h6><%= @photo.title %></h6>
+            <!-- Ratings & Review -->
+            <div class="ratings-review mb-15 d-flex align-items-center justify-content-between">
+              <div class="ratings">
+                <%= rating_for @photo, "price", star: 5, disable_after_rate: true %>
+              </div>
+            </div>
+            <!-- Avaiable -->
           </div>
           <div class="short_overview my-5">
             <p><%= @photo.description.html_safe %></p>
