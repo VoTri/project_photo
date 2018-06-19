@@ -21,3 +21,5 @@
 //= require plugins
 //= require active
 //= require_tree .
+//= require jquery.raty
+//= require ratyrate
