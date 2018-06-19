@@ -13,6 +13,8 @@ class PhotosController < ApplicationController
   end
 
   def show
+    @comments = @photo.comments.order("created_at desc")
+    @new_comment = @photo.comments.new
   end
 
   def new

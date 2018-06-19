@@ -7,7 +7,7 @@
             <div class="carousel-inner">
               <div class="carousel-item active">
                 <a class="gallery_img" href="img/product-img/pro-big-1.jpg">
-                  <%= image_tag @photo.image_url, class:"d-block w-100" %>
+                  <%= image_tag @photo.image_url.url, class:"d-block w-100" %>
                 </a>
               </div>
             </div>
@@ -28,9 +28,23 @@
             </a>
           </div>
           <div class="short_overview my-5">
-            <p><%= @photo.description %></p>
+            <p><%= @photo.description.html_safe %></p>
           </div>
         </div>
+      </div>
+      <div class="col-12 col-lg-5">
+        <% if user_signed_in? %>
+          <div id="comment_form">
+            <%= render "comments/comment_form" %>
+          </div>
+        <% end %>
+          <div id="comments-list">
+            <% if @comments.blank? %>
+              <p id = "no-comment">No comment</p>
+            <% else %>
+              <%= render partial: "comments/comments", collection: @comments, as: :comment %>
+            <% end %>
+          </div>
       </div>
     </div>
   </div>

@@ -47,7 +47,7 @@
       <% @photos.each do |photo| %>
       <div class="single-products-catagory clearfix">
         <a href="<%= photo_path(photo) %>">
-          <%= image_tag photo.image_url %>
+          <%= image_tag photo.image_url.url %>
           <!-- Hover Content -->
           <div class="hover-content">
             <div class="line"></div>
