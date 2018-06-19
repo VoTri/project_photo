@@ -1,5 +1,4 @@
-class Rate < ApplicationRecord
-  belongs_to :photo
-  belongs_to :user
-  validates :rate_count, presence: true
+class Rate < ActiveRecord::Base
+  belongs_to :rater, :class_name => "User"
+  belongs_to :rateable, :polymorphic => true
 end
