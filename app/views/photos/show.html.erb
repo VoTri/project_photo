@@ -45,13 +45,10 @@
             <%= render "comments/comment_form" %>
           </div>
         <% end %>
-          <div id="comments-list">
-            <% if @comments.blank? %>
-              <p id = "no-comment">No comment</p>
-            <% else %>
-              <%= render partial: "comments/comments", collection: @comments, as: :comment %>
-            <% end %>
+          <div id="comments-list" data-remote=true>
+            <%= render partial: "comments/comments", object: @comments %>
           </div>
+          <%= paginate @comments, theme: 'twitter-bootstrap-3' %>
       </div>
     </div>
   </div>

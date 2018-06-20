@@ -1,6 +1,6 @@
 <div class="products-catagories-area clearfix">
   <div class="amado-pro-catagory clearfix row">
-    <% @cate_photos = @category.cate_photos %>
+    <% @cate_photos = @category.cate_photos.page(params[:page]).per(9) %>
     <% @cate_photos.each do |cate_photo| %>
       <% photo = cate_photo.photo %>
       <div class="single-products-catagory clearfix">
@@ -13,5 +13,6 @@
         </a>
       </div>
     <% end %>
+    <%= paginate @cate_photos, theme: 'twitter-bootstrap-3' %>
   </div>
 </div>

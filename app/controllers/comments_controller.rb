@@ -6,6 +6,7 @@ class CommentsController < ApplicationController
     @comment = @photo.comments.build(comment_params)
     @comment.user_id = current_user.id
     if @comment.save
+      @comments = @photo.comments.order("created_at desc").page(params[:page]).per(10)
       respond_to do |format|
         format.html do
           redirect_to @photo
@@ -19,7 +20,7 @@ class CommentsController < ApplicationController
     @comment = Comment.find(params[:id])
     @photo = @comment.photo
     @comment.destroy
-    @comments = @photo.comments
+    @comments = @photo.comments.order("created_at desc").page(params[:page]).per(10)
     respond_to do |format|
       format.html do
         redirect_to @photo
@@ -40,7 +41,7 @@ class CommentsController < ApplicationController
   def update
     @photo = @comment.photo
     if @comment.update(comment_params)
-      @comments = @photo.comments.order("created_at desc")
+      @comments = @photo.comments.order("created_at desc").page(params[:page]).per(10)
       respond_to do |format|
         format.html do
           redirect_to @photo

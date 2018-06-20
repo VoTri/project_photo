@@ -1,7 +1,5 @@
 {
   "name": "demo",
   "private": true,
-  "dependencies": {
-    "wow.js": "^1.2.2"
-  }
+  "dependencies": {}
 }

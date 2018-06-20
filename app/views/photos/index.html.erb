@@ -16,26 +16,26 @@
 
       <tbody>
         <% @photos.each do |photo| %>
-        <tr>
-          <td><%= photo.title %></td>
-          <td><%= photo.description.html_safe %></td>
-          <td>
-            <% cate_photos = photo.cate_photos %>
-            <% cate_photos.each do |cate_photo| %>
-              <% category = cate_photo.category %>
-              <%= link_to category.name, category_path(category) %>
-            <% end %>
-          </td>
-          <td>
-            <%= image_tag photo.image_url.url, style: "max-width: 200px; max-height: 200px" %>
-          </td>
-          <td>
-            <%= link_to t("views.photos.index.edit"), edit_photo_path(photo), class: "btn btn-sm btn-primary" %>
-          </td>
-          <td>
-            <%= link_to t("views.photos.index.destroy"), photo, method: :delete, data: { confirm: 'Are you sure?' },class: "btn btn-sm btn-primary" %>
-          </td>
-        </tr>
+          <tr>
+            <td><%= photo.title %></td>
+            <td><%= photo.description.html_safe %></td>
+            <td>
+              <%= image_tag photo.image_url.url, style: "max-width: 200px; max-height: 200px" %>
+            </td>
+            <td>
+              <% cate_photos = photo.cate_photos %>
+              <% cate_photos.each do |cate_photo| %>
+                <% category = cate_photo.category %>
+                <%= link_to category.name, category_path(category) %>
+              <% end %>
+            </td>
+            <td>
+              <%= link_to t("views.photos.index.edit"), edit_photo_path(photo), class: "btn btn-sm btn-primary" %>
+            </td>
+            <td>
+              <%= link_to t("views.photos.index.destroy"), photo, method: :delete, data: { confirm: 'Are you sure?' },class: "btn btn-sm btn-primary" %>
+            </td>
+          </tr>
         <% end %>
       </tbody>
     </table>
@@ -45,17 +45,18 @@
   <div class="products-catagories-area clearfix">
     <div class="amado-pro-catagory clearfix row">
       <% @photos.each do |photo| %>
-      <div class="single-products-catagory clearfix">
-        <a href="<%= photo_path(photo) %>">
-          <%= image_tag photo.image_url.url %>
-          <!-- Hover Content -->
-          <div class="hover-content">
-            <div class="line"></div>
-            <p><%= photo.title %></p>
-          </div>
-        </a>
-      </div>
+        <div class="single-products-catagory clearfix">
+          <a href="<%= photo_path(photo) %>">
+            <%= image_tag photo.image_url.url %>
+            <!-- Hover Content -->
+            <div class="hover-content">
+              <div class="line"></div>
+              <p><%= photo.title %></p>
+            </div>
+          </a>
+        </div>
       <% end %>
+      <%= paginate @photos, theme: 'twitter-bootstrap-3' %>
     </div>
   </div>
 <% end %>
