@@ -21,6 +21,6 @@
 //= require active
 //= require ckeditor/init
 //= require cocoon
-//= require_tree .
 //= require jquery.raty
 //= require ratyrate
+//= require_tree .
