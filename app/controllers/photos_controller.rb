@@ -12,6 +12,10 @@ class PhotosController < ApplicationController
     end
   end
 
+  def index
+    @photos = @search.result
+  end
+
   def show
     @comments = @photo.comments.order("created_at desc")
     @new_comment = @photo.comments.new
