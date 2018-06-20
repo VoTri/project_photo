@@ -14,11 +14,11 @@
 //= require jquery
 //= require rails-ujs
 //= require ckeditor/init
+//= require ratyrate
+//= require cocoon
 //= require popper.min
 //= require bootstrap.min
 //= require plugins
 //= require active
-//= require cocoon
 //= require jquery.raty
-//= require ratyrate
 //= require_tree .
