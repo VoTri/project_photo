@@ -4,8 +4,8 @@
       <!-- Newsletter Text -->
       <div class="col-12 col-lg-6 col-xl-7">
         <div class="newsletter-text mb-100">
-          <h2>Subscribe for a <span>25% Discount</span></h2>
-          <p>Nulla ac convallis lorem, eget euismod nisl. Donec in libero sit amet mi vulputate consectetur. Donec auctor interdum purus, ac finibus massa bibendum nec.</p>
+          <h2><%= t("views.layouts.footer.subscribe") %><span><%= t("views.layouts.footer.discount") %></span></h2>
+          <p><%= t("views.layouts.footer.content") %></p>
         </div>
       </div>
       <!-- Newsletter Form -->
@@ -35,7 +35,7 @@
           </div>
           <!-- Copywrite Text -->
           <p class="copywrite"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-            Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="#" target="_blank">Colorlib</a>
+            <%= t("views.layouts.footer.copyright") %> &copy;<script>document.write(new Date().getFullYear());</script> <%= t("views.layouts.footer.all") %> <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="#" target="_blank"><%= t("views.layouts.footer.colorlib") %></a>
             <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
           </p>
         </div>
@@ -49,21 +49,10 @@
               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#footerNavContent" aria-controls="footerNavContent" aria-expanded="false" aria-label="Toggle navigation"><i class="fa fa-bars"></i></button>
               <div class="collapse navbar-collapse" id="footerNavContent">
                 <ul class="navbar-nav ml-auto">
-                  <li class="nav-item active">
-                    <a class="nav-link" href="#">Home</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">Shop</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">Product</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">Cart</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">Checkout</a>
-                  </li>
+                  <li class="nav-item"><%= link_to t("views.layouts.footer.home"), root_path, class: "nav-link" %></li>
+                  <% @categories.each do |category| %>
+                    <li class="nav-item"><%= link_to category.name, category_path(category), class: "nav-link" %></li>
+                  <% end %>
                 </ul>
               </div>
             </nav>

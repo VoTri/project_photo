@@ -1,0 +1,7 @@
+<div class= "photo">
+<h1><%= t("views.photos.edit.edit_photo") %></h1>
+
+<%= render 'form', photo: @photo %>
+
+<%= link_to t("views.photos.edit.back"), photos_path, class: "btn btn-danger" %>
+</div>
