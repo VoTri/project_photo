@@ -11,13 +11,13 @@
 // about supported directives.
 //
 //= require bootstrap-sprockets
-//= require rails-ujs
 //= require jquery
+//= require rails-ujs
+//= require ckeditor/init
 //= require popper.min
 //= require bootstrap.min
 //= require plugins
 //= require active
-//= require ckeditor/init
 //= require cocoon
 //= require jquery.raty
 //= require ratyrate
