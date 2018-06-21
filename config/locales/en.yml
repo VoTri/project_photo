@@ -30,4 +30,51 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  views:
+    photos:
+      cate_photo:
+        remove_category: "Remove Category"
+      form:
+        add_catefory: "Add Category"
+      edit:
+        edit_photo: "Editing Photo"
+        back: "Back"
+      index:
+        new_photo: "New Photo"
+        name: "Name"
+        description: "Description"
+        image: "Image"
+        category: "Category"
+        action: "Action"
+        edit: "Edit"
+        destroy: "Destroy"
+      new:
+        new_photo: "New Photo"
+        back: "Back"
+    layouts:
+      header:
+        home: "Home"
+        my_photo: "My Photo"
+        edit_profile: "Edit profile"
+        logout: "Logout"
+        login: "Login"
+        search: "Search"
+      footer:
+        subscribe: "Subscribe for a"
+        discount: "25% Discount"
+        content: "Nulla ac convallis lorem, eget euismod nisl. Donec in libero
+         sit amet mi vulputate consectetur. Donec auctor interdum purus, ac
+          finibus massa bibendum nec."
+        copyright: "Copyright"
+        all: " All rights reserved | This template is made with "
+        by: " by "
+        colorlib: "Colorlib"
+        home: "Home"
+  controllers:
+    photos:
+      creat_success: "Photo was successfully created."
+      update_success: "Photo was successfully updated."
+      destroy_success: "Photo was successfully destroyed."
+
+
+

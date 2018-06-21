@@ -1,8 +1,11 @@
 class Photo < ApplicationRecord
   belongs_to :user
   has_many :comments
+  has_many :cate_photos, dependent: :destroy
+  accepts_nested_attributes_for :cate_photos, allow_destroy: true,
+    reject_if: ->(attrs) { attrs['category_id'].blank? }
+  mount_uploader :image_url, ImageUrlUploader
   has_many :cate_photos
-  has_many :rates
   validates :image_url, presence: true
   validates :title, presence: true
   ratyrate_rateable "price"

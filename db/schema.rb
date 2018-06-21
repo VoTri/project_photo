@@ -23,11 +23,34 @@ ActiveRecord::Schema.define(version: 20180613023930) do
     t.index ["rater_id"], name: "index_average_caches_on_rater_id"
   end
 
+  create_table "cate_photos", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "category_id"
+    t.bigint "photo_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id", "photo_id"], name: "index_cate_photos_on_category_id_and_photo_id"
+    t.index ["category_id"], name: "index_cate_photos_on_category_id"
+    t.index ["photo_id"], name: "index_cate_photos_on_photo_id"
+  end
+
   create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
     t.boolean "status", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "ckeditor_assets", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "data_file_name", null: false
+    t.string "data_content_type"
+    t.integer "data_file_size"
+    t.string "data_fingerprint"
+    t.string "type", limit: 30
+    t.integer "width"
+    t.integer "height"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["type"], name: "index_ckeditor_assets_on_type"
   end
 
   create_table "comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -51,7 +74,7 @@ ActiveRecord::Schema.define(version: 20180613023930) do
 
   create_table "photos", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "title"
-    t.string "description"
+    t.text "description"
     t.string "image_url"
     t.bigint "user_id"
     t.datetime "created_at", null: false

@@ -44,4 +44,5 @@ Devise.setup do |config|
   config.reset_password_within = 6.hours
   config.sign_out_via = :delete
   config.secret_key = 'defbac877f7d21d7c241465102ef29c0bb4f4e917d5bebfd31e9fad58319233f22d728461fbe94bf9cd981122d4461bce9871666af6c01872532a3d644154c72'
+  config.scoped_views = true
 end
