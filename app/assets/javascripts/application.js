@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require rails-ujs
+//= require bootstrap.min
 //= require bootstrap-sprockets
 //= require popper.min
 //= require plugins
@@ -21,4 +22,3 @@
 //= require jquery.raty
 //= require ratyrate
 //= require_tree .
-//= require bootstrap.min
