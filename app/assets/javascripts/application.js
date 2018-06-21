@@ -10,11 +10,11 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require bootstrap.min
 //= require jquery
 //= require rails-ujs
 //= require bootstrap-sprockets
 //= require popper.min
-//= require bootstrap.min
 //= require plugins
 //= require active
 //= require ckeditor/init
