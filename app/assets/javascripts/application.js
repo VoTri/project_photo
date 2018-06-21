@@ -17,8 +17,8 @@
 //= require popper.min
 //= require plugins
 //= require active
-//= require ckeditor/init
-//= require cocoon
 //= require jquery.raty
 //= require ratyrate
+//= require cocoon
+//= require ckeditor/init
 //= require_tree .
