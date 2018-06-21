@@ -47,5 +47,8 @@ group :production do
  gem 'rails_12factor'
 end
 
+group :assets do
+  gem 'turbo-sprockets-rails3'
+ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: %i(mingw mswin x64_mingw jruby)
