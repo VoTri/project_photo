@@ -59,6 +59,7 @@ en:
         logout: "Logout"
         login: "Login"
         search: "Search"
+        admin: "Admin"
       footer:
         subscribe: "Subscribe for a"
         discount: "25% Discount"
