@@ -20,7 +20,7 @@
         <li><%= link_to t("views.layouts.header.edit_profile"), edit_user_registration_path %></li>
         <li><%= link_to t("views.layouts.header.logout"), destroy_user_session_path, method: :delete %></li>
         <% if current_user.role == "admin"%>
-          <li><%= link_to "Admin", rails_admin_path %></li>
+          <li><%= link_to t("views.layouts.header.admin"), rails_admin_path %></li>
         <% end %>
       <% else %>
         <li><%= link_to t("views.layouts.header.login"), new_user_session_path %></li>
