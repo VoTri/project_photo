@@ -14,5 +14,7 @@
       </div>
     <% end %>
   </div>
-  <%= paginate @photos, theme: 'twitter-bootstrap-3' %>
+  <% if !@photo.nil? %>
+    <%= paginate @photos, theme: 'twitter-bootstrap-3' %>
+  <% end %>
 </div>

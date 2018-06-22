@@ -17,8 +17,11 @@
       <% if user_signed_in? %>
         <li>Welcome <%= current_user.name %></li>
         <li><%= link_to t("views.layouts.header.my_photo"), photos_path %></li>
-        <li><%= link_to t("views.layouts.header.edut_profile"), edit_user_registration_path %></li>
+        <li><%= link_to t("views.layouts.header.edit_profile"), edit_user_registration_path %></li>
         <li><%= link_to t("views.layouts.header.logout"), destroy_user_session_path, method: :delete %></li>
+        <% if current_user.role == "admin"%>
+          <li><%= link_to "Admin", rails_admin_path %></li>
+        <% end %>
       <% else %>
         <li><%= link_to t("views.layouts.header.login"), new_user_session_path %></li>
         <li><%= link_to t("views.layouts.header.sign_up"), new_user_registration_path %></li>
