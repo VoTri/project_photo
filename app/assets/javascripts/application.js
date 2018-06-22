@@ -12,8 +12,11 @@
 //
 //= require jquery
 //= require rails-ujs
+//= require jquery-2.2.4.min
 //= require bootstrap.min
 //= require bootstrap-sprockets
+//= require popper.min
+//= require classy-nav.min
 //= require popper.min
 //= require plugins
 //= require active
