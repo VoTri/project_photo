@@ -71,9 +71,9 @@
     $(".cart-table table").niceScroll();
   }
 
-  if ($window.width() > 767) {
-    new WOW().init();
-  }
+  // if ($window.width() > 767) {
+  //   new WOW().init();
+  // }
 
   if ($.fn.tooltip) {
     $('[data-toggle="tooltip"]').tooltip();

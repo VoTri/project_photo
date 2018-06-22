@@ -13,14 +13,15 @@
 
 //= require jquery
 //= require rails-ujs
+//= require popper.min
 //= require bootstrap.min
+//= require active
 //= require bootstrap-sprockets
+//= require classy-nav.min
 //= require popper.min
 //= require plugins
-//= require active
-//= require ckeditor/init
-//= require cocoon
 //= require jquery.raty
 //= require ratyrate
-//= require jquery-ui
+//= require cocoon
+//= require ckeditor/init
 //= require_tree .
