@@ -6,14 +6,14 @@ class PhotosController < ApplicationController
   def index
     if params[:q].nil?
       authenticate_user!
-      @photos = Photo.all.where(user_id: current_user.id).page params[:page]
+      @photos = Photo.all.where(user_id: current_user.id).page(params[:page]).per(5)
     else
-      @photos = @search.result
+      @photos = @search.result.page(params[:page]).per(9)
     end
   end
 
   def show
-    @comments = @photo.comments.order("created_at desc")
+    @comments = @photo.comments.order("created_at desc").page(params[:page]).per(10)
     @new_comment = @photo.comments.new
   end
 
