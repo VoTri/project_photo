@@ -12,13 +12,13 @@
 //
 //= require jquery
 //= require rails-ujs
-//= require bootstrap.min
-//= require bootstrap-sprockets
 //= require popper.min
+//= require bootstrap.min
+//= require active
+//= require bootstrap-sprockets
 //= require classy-nav.min
 //= require popper.min
 //= require plugins
-//= require active
 //= require jquery.raty
 //= require ratyrate
 //= require cocoon
