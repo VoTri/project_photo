@@ -1,18 +1,40 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: [:edit, :update, :destroy]
 
+  def new
+    @comment = Comment.new(parent_id: params[:parent_id])
+    @comment_old = Comment.find_by(id: params[:parent_id])
+    @photo = Photo.find_by(id: @comment_old.photo_id)
+    @comment.photo_id = @photo.id
+    respond_to do |format|
+      format.html do
+        redirect_to @photo
+      end
+      format.js
+    end
+  end
+
   def create
-    @photo = Photo.find(params[:photo_id])
-    @comment = @photo.comments.build(comment_params)
+    if comment_params["parent_id"].nil?
+      @photo = Photo.find(params[:photo_id])
+      @comment = @photo.comments.build(comment_params)
+    else
+      @comment_old = Comment.find_by(id: comment_params["parent_id"].to_i)
+      @photo = Photo.find_by(id: @comment_old.photo_id)
+      @comment = @photo.comments.build(comment_params)
+    end
     @comment.user_id = current_user.id
     if @comment.save
-      @comments = @photo.comments.order("created_at desc").page(params[:page]).per(10)
+      @comments = @photo.comments.order("created_at desc").where(parent_id: nil).page(params[:page]).per(10)
+      @comments_parents = @photo.comments.order("created_at desc").where(parent_id: @comment.id)
       respond_to do |format|
         format.html do
           redirect_to @photo
         end
         format.js
       end
+    else
+      render 'new'
     end
   end
 
@@ -20,7 +42,8 @@ class CommentsController < ApplicationController
     @comment = Comment.find(params[:id])
     @photo = @comment.photo
     @comment.destroy
-    @comments = @photo.comments.order("created_at desc").page(params[:page]).per(10)
+    @comments = @photo.comments.order("created_at desc").where(parent_id: nil).page(params[:page]).per(10)
+    @comments_parents = @photo.comments.order("created_at desc").where(parent_id: @comment.id)
     respond_to do |format|
       format.html do
         redirect_to @photo
@@ -30,6 +53,7 @@ class CommentsController < ApplicationController
   end
 
   def edit
+    @photo = @comment.photo
     respond_to do |format|
       format.html do
         redirect_to @photo
@@ -41,13 +65,16 @@ class CommentsController < ApplicationController
   def update
     @photo = @comment.photo
     if @comment.update(comment_params)
-      @comments = @photo.comments.order("created_at desc").page(params[:page]).per(10)
+      @comments = @photo.comments.order("created_at desc").where(parent_id: nil).page(params[:page]).per(10)
+      @comments_parents = @photo.comments.order("created_at desc").where(parent_id: @comment.id)
       respond_to do |format|
         format.html do
           redirect_to @photo
         end
         format.js
       end
+    else
+      render 'edit'
     end
   end
 
@@ -57,6 +84,6 @@ class CommentsController < ApplicationController
   end
 
   def comment_params
-    params.require(:comment).permit(:user_id, :photo_id, :description)
+    params.require(:comment).permit(:user_id, :photo_id, :description, :parent_id)
   end
 end

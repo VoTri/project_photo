@@ -9,5 +9,6 @@ Rails.application.routes.draw do
   resources :photos, only: :show do
     resources :comments
   end
+  get '/comments/new/(:parent_id)', to: 'comments#new', as: :new_comment
   resources :comments
 end

@@ -5,15 +5,36 @@
     <div class="post-grids">
       <h4><% @user=comment.user %><%= @user.name%></h4>
       <p class="comments"><%= time(comment.updated_at) %></p>
-      <p class="text comment-<%= comment.id %>">
+      <div class="comment-<%= comment.id %>">
         <%= comment.description %>
-        <% if user_signed_in? %>
-          <% if comment.user_id == current_user.id %>
-            <%= link_to 'Edit', edit_comment_path(comment.id), class: "btn btn-default comment-edit-#{comment.id}", remote: true %>
-            <%= link_to '', photo_comment_path(comment.photo, comment), method: :delete, data: { confirm: 'Delete comment?' }, class: 'glyphicon glyphicon-trash text-danger', id: "#{comment.id}_delete", remote: true, title: 'Delete comment', rel: 'tooltip' %>
+        <p>
+          <% if user_signed_in? %>
+            <% if comment.user_id == current_user.id %>
+              <%= link_to 'Edit', edit_comment_path(comment.id), class: "btn btn-default", remote: true %>
+              <%= link_to '', photo_comment_path(comment.photo, comment), method: :delete, data: { confirm: 'Delete comment?' }, class: 'glyphicon glyphicon-trash text-danger', id: "#{comment.id}_delete", remote: true, title: 'Delete comment', rel: 'tooltip' %>
+            <% end %>
+            <%= link_to 'Reply', new_comment_path(comment.id), class: "btn btn-sm btn-primary", remote: true %>
           <% end %>
+        </p>
+      </div>
+      <div class="reply">
+        <% @comments_parent = reply(comment) %>
+        <% @comments_parent.each do |comment| %>
+          <h4><% @user=comment.user %><%= @user.name%></h4>
+          <p class="comments"><%= time(comment.updated_at) %></p>
+          <p class="text comment-<%= comment.id %>">
+            <%= comment.description %>
+            <p>
+              <% if user_signed_in? %>
+                <% if comment.user_id == current_user.id %>
+                  <%= link_to 'Edit', edit_comment_path(comment.id), class: "btn btn-default", remote: true %>
+                  <%= link_to '', photo_comment_path(comment.photo, comment), method: :delete, data: { confirm: 'Delete comment?' }, class: 'glyphicon glyphicon-trash text-danger', id: "#{comment.id}_delete", remote: true, title: 'Delete comment', rel: 'tooltip' %>
+                <% end %>
+              <% end %>
+            </p>
+          </p>
         <% end %>
-      </p>
+      </div>
     </div>
   <% end %>
 <% end %>

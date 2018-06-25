@@ -1,6 +1,7 @@
 class Comment < ApplicationRecord
   belongs_to :photo
   belongs_to :user
+  acts_as_tree order: 'created_at DESC'
   validates :description, presence: true
   rails_admin do
     list do
