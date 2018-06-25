@@ -7,7 +7,7 @@
       <p class="comments"><%= time(comment.updated_at) %></p>
       <div class="comment-<%= comment.id %>">
         <%= comment.description %>
-        <p>
+        <div class="comment-reply-<%= comment.id %>">
           <% if user_signed_in? %>
             <% if comment.user_id == current_user.id %>
               <%= link_to 'Edit', edit_comment_path(comment.id), class: "btn btn-default", remote: true %>
@@ -15,14 +15,14 @@
             <% end %>
             <%= link_to 'Reply', new_comment_path(comment.id), class: "btn btn-sm btn-primary", remote: true %>
           <% end %>
-        </p>
+        </div>
       </div>
       <div class="reply">
         <% @comments_parent = reply(comment) %>
         <% @comments_parent.each do |comment| %>
           <h4><% @user=comment.user %><%= @user.name%></h4>
           <p class="comments"><%= time(comment.updated_at) %></p>
-          <p class="text comment-<%= comment.id %>">
+          <div class="comment-<%= comment.id %>">
             <%= comment.description %>
             <p>
               <% if user_signed_in? %>
@@ -32,7 +32,7 @@
                 <% end %>
               <% end %>
             </p>
-          </p>
+          </div>
         <% end %>
       </div>
     </div>

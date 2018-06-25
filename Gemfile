@@ -8,8 +8,6 @@ end
 gem 'bootstrap-kaminari-views'
 gem 'bootstrap-sass', '~> 3.3.7'
 gem 'carrierwave'
-gem 'client_side_validations'
-gem 'client_side_validations-simple_form'
 gem 'closure_tree'
 gem 'ckeditor'
 gem 'cocoon'

@@ -34,7 +34,7 @@ class CommentsController < ApplicationController
         format.js
       end
     else
-      render 'new'
+      redirect_to @photo
     end
   end
 

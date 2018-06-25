@@ -24,5 +24,4 @@
 //= require ratyrate
 //= require cocoon
 //= require ckeditor/init
-//= require rails.validations.simple_form
 //= require_tree .
