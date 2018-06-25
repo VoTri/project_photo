@@ -41,9 +41,25 @@ class CommentsController < ApplicationController
   def destroy
     @comment = Comment.find(params[:id])
     @photo = @comment.photo
-    @comment.destroy
-    @comments = @photo.comments.order("created_at desc").where(parent_id: nil).page(params[:page]).per(10)
-    @comments_parents = @photo.comments.order("created_at desc").where(parent_id: @comment.id)
+    if @comment.parent_id.nil?
+      @comments = Comment.where(parent_id: @comment.id)
+      unless @comments.nil?
+        if @comments.length > 1
+          @comments.each do |comment|
+            comment.destroy
+          end
+        elsif @comments.length > 0
+          @comments.destroy
+        end
+      end
+      @comment.destroy
+      @comments = @photo.comments.order("created_at desc").where(parent_id: nil).page(params[:page]).per(10)
+    else
+      @comments = @photo.comments.order("created_at desc").where(parent_id: nil).page(params[:page]).per(10)
+      @comment_old = Comment.find_by(id: @comment.parent_id)
+      @comment.destroy
+      @comments_parents = @photo.comments.order("created_at desc").where(parent_id: @comment_old.id)
+    end
     respond_to do |format|
       format.html do
         redirect_to @photo
